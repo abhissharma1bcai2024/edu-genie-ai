@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edu Genie AI - Sign Up</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body class="login-page">
+
+<div class="login-wrapper">
+
+<div class="login-box">
+
+<div class="logo-box">
+
+<div class="logo-circle">
+
+🎓
+
+</div>
+
+<h1>Create Account</h1>
+
+<p>Join Edu Genie AI</p>
+
+</div>
+
+<form method="POST">
+
+<div class="input-box">
+
+<i class="fa-solid fa-user"></i>
+
+<input
+type="text"
+name="username"
+placeholder="Username"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+name="email"
+placeholder="Email"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+name="password"
+placeholder="Password"
+required>
+
+</div>
+
+<button
+type="submit"
+class="login-btn">
+
+<i class="fa-solid fa-user-plus"></i>
+
+Create Account
+
+</button>
+
+</form>
+
+<div class="bottom-text">
+
+Already have an account?
+
+<a href="{{ url_for('login') }}">
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

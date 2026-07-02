@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edu Genie Dashboard</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>🎓 Edu Genie</h2>
+
+    <ul>
+
+        <li><a href="#">🏠 Dashboard</a></li>
+
+        <li><a href="#">🤖 AI Chat</a></li>
+
+        <li><a href="#">📄 Notes Summary</a></li>
+
+        <li><a href="#">❓ Quiz Generator</a></li>
+
+        <li><a href="#">📅 Study Planner</a></li>
+
+        <li><a href="/logout">🚪 Logout</a></li>
+
+    </ul>
+
+</div>
+
+<div class="content">
+
+<h1>Welcome {{ user.username }}</h1>
+
+<div class="chat-box">
+
+<h2>Ask Gemini AI</h2>
+
+<textarea
+id="question"
+placeholder="Ask any study related question...">
+</textarea>
+
+<button onclick="askAI()">
+
+Ask AI
+
+</button>
+
+</div>
+
+<div id="answer" class="answer-box">
+
+AI Response will appear here...
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

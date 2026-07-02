@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edu Genie AI</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= Sidebar ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>🎓 Edu Genie</h2>
+
+            <p>AI Learning Assistant</p>
+
+        </div>
+        <div class="user-card">
+
+    <div class="avatar">
+        👤
+    </div>
+
+    <div class="user-info">
+        <h3>{{ current_user.username }}</h3>
+        <p>🟢 Online</p>
+    </div>
+
+</div>
+
+<input
+type="text"
+id="searchHistory"
+placeholder="🔍 Search History">
+
+        <button class="menu-btn">
+            ➕ New Chat
+        </button>
+
+        <div class="history-title">
+
+            💬 Chat History
+
+        </div>
+
+        <div id="historyList"></div>
+
+        <button
+            class="menu-btn delete-btn"
+            onclick="deleteHistory()">
+
+            🗑 Delete History
+
+        </button>
+
+        <div class="sidebar-bottom">
+
+            <button class="menu-btn" onclick="showPage('pdf')">
+    📄 PDF Summary
+</button>
+            <button class="menu-btn" onclick="showPage('quiz')">
+    ❓ Quiz Generator
+</button>
+<button class="menu-btn" onclick="showPage('planner')">
+    📅 Study Planner
+</button>
+
+            <button
+                class="menu-btn logout-btn"
+                onclick="window.location='/logout'">
+
+                🚪 Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ================= Main ================= -->
+
+    <main class="main">
+
+        <!-- Top Bar -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>🤖 Edu Genie AI</h1>
+
+                <p>
+
+                    Welcome,
+
+                    <strong>{{ current_user.username }}</strong>
+
+                </p>
+
+            </div>
+
+            <div class="status">
+
+                🟢 Online
+
+            </div>
+
+        </div>
+
+        <!-- Chat Section -->
+
+        <div class="chat-card">
+
+            <textarea
+
+                id="question"
+
+                placeholder="Ask anything...">
+
+            </textarea>
+
+            <div class="button-group">
+
+                <button
+                    class="ask-btn"
+                    onclick="askAI()">
+
+                    🤖 Ask AI
+
+                </button>
+
+                <button
+                    class="ask-btn"
+                    onclick="startVoice()">
+
+                    🎤 Voice
+
+                </button>
+
+                <button
+                    class="ask-btn"
+                    onclick="downloadPDF()">
+
+                    📥 Download PDF
+
+                </button>
+
+            </div>
+
+          <div id="chatContainer">
+
+    <div class="ai-message">
+
+        <div class="ai-avatar">
+            🤖
+        </div>
+
+        <div class="message">
+
+            <strong>Edu Genie AI</strong>
+
+            <br><br>
+
+            👋 Welcome {{ current_user.username }}
+
+            <br><br>
+
+            Ask me anything about your studies.
+
+        </div>
+
+    </div>
+
+</div>
+
+        <div class="cards">
+
+            <!-- PDF -->
+
+            <div class="feature-card">
+
+                <h2>📄 PDF Summary</h2>
+
+                <input
+                    type="file"
+                    id="pdfFile">
+
+                <button
+                    class="ask-btn"
+                    onclick="uploadPDF()">
+
+                    Upload & Summarize
+
+                </button>
+
+                <div id="summary"></div>
+
+            </div>
+
+            <!-- Quiz -->
+
+            <div class="feature-card">
+
+                <h2>❓ Quiz Generator</h2>
+
+                <input
+                    type="text"
+                    id="topic"
+                    placeholder="Enter Topic">
+
+                <button
+                    class="ask-btn"
+                    onclick="generateQuiz()">
+
+                    Generate Quiz
+
+                </button>
+
+                <div id="quizResult"></div>
+
+            </div>
+
+            <!-- Planner -->
+
+            <div class="feature-card">
+
+                <h2>📅 Study Planner</h2>
+
+                <input
+                    type="text"
+                    id="subject"
+                    placeholder="Subject">
+
+                <input
+                    type="number"
+                    id="days"
+                    placeholder="Days">
+
+                <button
+                    class="ask-btn"
+                    onclick="generatePlan()">
+
+                    Generate Plan
+
+                </button>
+
+                <div id="studyPlan"></div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edu Genie AI</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <h2>🎓 Edu Genie</h2>
+        <p>AI Learning Assistant</p>
+    </div>
+
+    <div class="user-card">
+        <div class="avatar">👤</div>
+        <div>
+            <h3>{{ current_user.username }}</h3>
+            <span>🟢 Online</span>
+        </div>
+    </div>
+
+    <input
+        type="text"
+        id="searchHistory"
+        placeholder="🔍 Search History">
+
+    <!-- Navigation -->
+
+    <button class="menu-btn active"
+        onclick="showScreen('chat')">
+        💬 Chat
+    </button>
+
+    <button class="menu-btn"
+        onclick="showScreen('pdf')">
+        📄 PDF Summary
+    </button>
+
+    <button class="menu-btn"
+        onclick="showScreen('quiz')">
+        ❓ Quiz Generator
+    </button>
+
+    <button class="menu-btn"
+        onclick="showScreen('planner')">
+        📅 Study Planner
+    </button>
+
+    <button class="menu-btn"
+        onclick="newChat()">
+        ➕ New Chat
+    </button>
+
+    <button class="menu-btn delete-btn"
+        onclick="deleteHistory()">
+        🗑 Delete History
+    </button>
+
+    <hr style="margin:20px 0;border:1px solid #2b3648;">
+
+    <div class="history-title">
+
+        💬 Chat History
+
+    </div>
+
+    <div id="historyList"></div>
+
+    <button class="menu-btn logout-btn"
+        onclick="window.location='/logout'">
+        🚪 Logout
+    </button>
+
+</aside>
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+<div class="topbar">
+
+<h1>🤖 Edu Genie AI</h1>
+
+<p>
+
+Welcome
+
+<strong>{{ current_user.username }}</strong>
+
+</p>
+
+</div>
+
+<!-- ================= CHAT SCREEN ================= -->
+
+<section id="chatScreen" class="screen">
+
+<div class="chat-card">
+
+<textarea
+id="question"
+placeholder="Ask anything..."></textarea>
+
+<div class="button-group">
+
+<button
+class="ask-btn"
+onclick="askAI()">
+
+🤖 Ask AI
+
+</button>
+
+<button
+class="ask-btn"
+onclick="startVoice()">
+
+🎤 Voice
+
+</button>
+
+<button
+class="ask-btn"
+onclick="downloadPDF()">
+
+📥 Download PDF
+
+</button>
+
+</div>
+
+<div id="chatContainer">
+
+<div class="ai-message">
+
+<div class="ai-avatar">
+
+🤖
+
+</div>
+
+<div class="message">
+
+<h3>Edu Genie AI</h3>
+
+👋 Welcome {{ current_user.username }}
+
+<br><br>
+
+Ask me anything to start learning.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= PDF SCREEN ================= -->
+
+<section id="pdfScreen" class="screen" style="display:none;">
+
+    <div class="feature-card">
+
+        <h2>📄 PDF Summary</h2>
+
+        <p>Upload a PDF and get an AI-generated summary.</p>
+
+        <input
+            type="file"
+            id="pdfFile"
+            accept=".pdf">
+
+        <button
+            class="ask-btn"
+            onclick="uploadPDF()">
+
+            📄 Upload & Summarize
+
+        </button>
+
+        <div id="summary"></div>
+
+    </div>
+
+</section>
+
+<!-- ================= QUIZ SCREEN ================= -->
+
+<section id="quizScreen" class="screen" style="display:none;">
+
+    <div class="feature-card">
+
+        <h2>❓ Quiz Generator</h2>
+
+        <p>Create AI-generated MCQs on any topic.</p>
+
+        <input
+            type="text"
+            id="topic"
+            placeholder="Enter Topic">
+
+        <button
+            class="ask-btn"
+            onclick="generateQuiz()">
+
+            🚀 Generate Quiz
+
+        </button>
+
+        <div id="quizResult"></div>
+
+    </div>
+
+</section>
+
+<!-- ================= STUDY PLANNER ================= -->
+
+<section id="plannerScreen" class="screen" style="display:none;">
+
+    <div class="feature-card">
+
+        <h2>📅 Study Planner</h2>
+
+        <p>Create a personalized study plan.</p>
+
+        <input
+            type="text"
+            id="subject"
+            placeholder="Subject Name">
+
+        <input
+            type="number"
+            id="days"
+            placeholder="Number of Days">
+
+        <button
+            class="ask-btn"
+            onclick="generatePlan()">
+
+            📅 Generate Study Plan
+
+        </button>
+
+        <div id="studyPlan"></div>
+
+    </div>
+
+</section>
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
