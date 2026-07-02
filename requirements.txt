@@ -1,0 +1,9 @@
+Flask
+Flask-SQLAlchemy
+Flask-Login
+python-dotenv
+google-genai
+gunicorn
+Werkzeug
+PyMuPDF
+reportlab
