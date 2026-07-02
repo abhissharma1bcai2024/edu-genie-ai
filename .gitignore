@@ -4,8 +4,3 @@ __pycache__/
 instance/database.db
 static/uploads/
 *.pyc
-.env
-venv/
-__pycache__/
-instance/database.db
-static/uploads/
